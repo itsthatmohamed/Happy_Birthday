@@ -27,15 +27,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             HappyBirthdayTheme {
-                GreetingText(
-                    message = "Happy Birthday Charlie!",
-                    from = "from Mohamed",
-                    modifier = Modifier.padding(8.dp)
-                )
-                GreetingImage(
-                    message = "Happy Birthday Charlie!",
-                    from = "from Mohamed",
-                )
+                Box{
+                    GreetingImage()
+                    GreetingText(
+                        message = "Happy Birthday Charlie!",
+                        from = "from Mohamed",
+                        modifier = Modifier.padding(8.dp)
+                    )
+                }
+
             }
         }
     }
@@ -70,6 +70,16 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
 }
 
 
+@Composable
+fun GreetingImage() {
+    Image(
+        contentScale = ContentScale.Crop,
+        modifier = Modifier.fillMaxSize(),
+        painter = painterResource(R.drawable.androidparty),
+        contentDescription = "Happy Birthday, Charlie!",
+        alpha = 0.5F
+    )
+}
 
 @Preview(
     showBackground = true,
@@ -79,28 +89,13 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        GreetingImage(
-            message = "Happy Birthday Charlie!",
-            from = "from Mohamed"
-        )
-    }
-}
-
-@Composable
-fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
-    Box(modifier.fillMaxSize()) {
-        Image(
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize(),
-            painter = painterResource(R.drawable.androidparty),
-            contentDescription = "Happy Birthday, Charlie!"
-        )
-        GreetingText(
-            message = message,
-            from = from,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp)
-        )
+        Box{
+            GreetingImage()
+            GreetingText(
+                message = "Happy Birthday Charlie!",
+                from = "from Mohamed",
+                modifier = Modifier.padding(8.dp)
+            )
+        }
     }
 }
