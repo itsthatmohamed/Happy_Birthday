@@ -25,7 +25,7 @@ import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 
 @Composable
 fun HappyBirthdayScreen(
-    viewModel: HappyBirthdayViewModel = viewModel()
+    viewModel: HappyBirthdayViewModel = HappyBirthdayViewModel(FakeAgeAPI())
 ) {
 
     val state = viewModel.uiState.collectAsState()
